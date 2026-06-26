@@ -11,7 +11,7 @@ public class Contacts {
 	String email;
 	
 	public Contacts() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	public String getFirstName() {
 		return firstName;
