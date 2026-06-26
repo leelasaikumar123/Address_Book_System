@@ -45,5 +45,13 @@ public class AddressBook {
 			editContact();
 		}
 
+	}	
+	public void delete() {
+		System.out.println("Enter First Name of Person");
+		String deleteName = sc.nextLine();
+		if (deleteName.equals(contact.firstName)) {
+			System.out.println("you deleted " + contact.firstName + " data");
+			contact = null;
+		}
 	}
 }
