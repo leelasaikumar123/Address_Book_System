@@ -54,4 +54,7 @@ public class AddressBook {
 			contact = null;
 		}
 	}
+	public void showContact() {
+		System.out.println(contact.toString());
+	}
 }
