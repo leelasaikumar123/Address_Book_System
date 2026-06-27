@@ -19,7 +19,8 @@ public class AddressBookMain {
 			System.out.println("5.Search By State");
             System.out.println("6.No.0f Contacts in a city");
 			System.out.println("7.No.0f Contacts in a State");
-			System.out.println("8.Exit");
+			System.out.println("8.Sort By Name");
+			System.out.println("9.Exit");
 			int input = sc.nextInt();
 			sc.nextLine();
 			switch (input) {
@@ -126,6 +127,17 @@ public class AddressBookMain {
 
 					break;
 				case 8:
+					System.out.println("Enter Address Book Name:");
+					String bookName = sc.nextLine();
+					AddressBook book = addressBookMap.get(bookName);
+					if(book == null) {
+						System.out.println("Address Book Not Found");
+					}
+					else {
+						book.sortByName();
+					}
+					break;	
+				case 9:
 					System.out.println("Thank You");
 					sc.close();
 					return;

@@ -1,6 +1,7 @@
 package com.bridgelabz.main;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class AddressBook {
 	ArrayList<Contacts> contactList = new ArrayList<>();
@@ -116,4 +117,9 @@ public class AddressBook {
 public long countByState(String state) {
 	return contactList.stream().filter(contact -> contact.getState().equalsIgnoreCase(state)).count();
 }
+
+public void sortByName() {
+	contactList.stream().sorted((c1, c2) -> c1.getFirstName().compareToIgnoreCase(c2.getFirstName())).forEach(System.out::println);
+}
+
 }
