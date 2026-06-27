@@ -33,8 +33,13 @@ public class AddressBook {
 		contact.setZipCode(zipCode);
 		contact.setPhoneNumber(phoneNum);
 		contact.setEmail(email);
-		contactList.add(contact);
-		System.out.println("Contact Added Successfully");
+		if(contactList.contains(contact)) {
+		    System.out.println("Duplicate Contact Found");
+		}
+		else {
+		    contactList.add(contact);
+		    System.out.println("Contact Added Successfully");
+		}
 	}
 	
 	public void editContact() {
