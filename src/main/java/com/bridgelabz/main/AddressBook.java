@@ -2,6 +2,7 @@ package com.bridgelabz.main;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class AddressBook {
 	ArrayList<Contacts> contactList = new ArrayList<>();
@@ -122,4 +123,13 @@ public void sortByName() {
 	contactList.stream().sorted((c1, c2) -> c1.getFirstName().compareToIgnoreCase(c2.getFirstName())).forEach(System.out::println);
 }
 
+public void sortByZip() {
+	contactList.stream().sorted(Comparator.comparing(obj->obj.zipCode)).forEach(System.out::println);
+}
+public void sortByCity() {
+	contactList.stream().sorted((c1, c2) -> c1.getCity().compareToIgnoreCase(c2.getCity())).forEach(System.out::println);
+}
+public void sortByState() {
+	contactList.stream().sorted((c1, c2) -> c1.getState().compareToIgnoreCase(c2.getState())).forEach(System.out::println);
+}
 }

@@ -20,7 +20,10 @@ public class AddressBookMain {
             System.out.println("6.No.0f Contacts in a city");
 			System.out.println("7.No.0f Contacts in a State");
 			System.out.println("8.Sort By Name");
-			System.out.println("9.Exit");
+			System.out.println("9.Sort By ZipCode");
+			System.out.println("10.Sort By City");
+			System.out.println("11.Sort By State");
+			System.out.println("12.Exit");
 			int input = sc.nextInt();
 			sc.nextLine();
 			switch (input) {
@@ -138,6 +141,39 @@ public class AddressBookMain {
 					}
 					break;	
 				case 9:
+					System.out.println("Enter Address Book Name:");
+					String bookName1 = sc.nextLine();
+					AddressBook book1 = addressBookMap.get(bookName1);
+					if(book1 == null) {
+						System.out.println("Address Book Not Found");
+					}
+					else {
+						book1.sortByZip();
+					}
+					break;
+				case 10:
+					System.out.println("Enter Address Book Name:");
+					String bookName2 = sc.nextLine();
+					AddressBook book2 = addressBookMap.get(bookName2);
+					if(book2 == null) {
+						System.out.println("Address Book Not Found");
+					}
+					else {
+						book2.sortByCity();
+					}
+					break;
+				case 11:
+					System.out.println("Enter Address Book Name:");
+					String bookName3 = sc.nextLine();
+					AddressBook book3 = addressBookMap.get(bookName3);
+					if(book3 == null) {
+						System.out.println("Address Book Not Found");
+					}
+					else {
+						book3.sortByState();
+					}
+					break;
+				case 12:
 					System.out.println("Thank You");
 					sc.close();
 					return;
