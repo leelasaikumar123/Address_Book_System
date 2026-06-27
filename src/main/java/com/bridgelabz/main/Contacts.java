@@ -63,9 +63,7 @@ public class Contacts {
 	}
 	@Override
 	public String toString() {
-		return "Contacts [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", City=" + City
-				+ ", state=" + state + ", zipCode=" + zipCode + ", phoneNumber=" + phoneNumber + ", email=" + email
-				+ "]";
+		return firstName+","+lastName+","+address+","+City+","+state+","+zipCode+","+phoneNumber+","+email;
 	}
 	
 	@Override
