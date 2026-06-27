@@ -81,4 +81,33 @@ public class AddressBook {
             System.out.println(contact);
         }
 	}
+	
+
+
+	public ArrayList<Contacts> getContactList() {
+		return contactList;
+	}
+	public void searchByCity(String city) {
+		boolean found = false;
+		for (Contacts contact : contactList) {
+			if (contact.getCity().equalsIgnoreCase(city)) {
+				System.out.println(contact);
+				found = true;
+			}
+		}
+		if (!found)
+			System.out.println("No Person Found");
+	}
+	
+	public void searchByState(String state) {
+		boolean found = false;
+		for (Contacts contact : contactList) {
+			if (contact.getState().equalsIgnoreCase(state)) {
+				System.out.println(contact);
+				found = true;
+			}
+		}
+		if (!found)
+			System.out.println("No Person Found");
+	}
 }

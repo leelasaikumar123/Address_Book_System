@@ -13,7 +13,9 @@ public class AddressBookMain {
 			System.out.println("1.Create Address Book");
 			System.out.println("2.Open Address Book");
 			System.out.println("3.Show Address Books");
-			System.out.println("4.Exit");
+			System.out.println("4.Search By City");
+			System.out.println("5.Search By State");
+			System.out.println("6.Exit");
 			int input = sc.nextInt();
 			sc.nextLine();
 			switch (input) {
@@ -76,6 +78,21 @@ public class AddressBookMain {
 				}
 				break;
 			case 4:
+				System.out.println("Enter City:");
+				String city = sc.nextLine();
+				for (AddressBook book : addressBookMap.values()) {
+					book.searchByCity(city);
+				}
+				break;	
+			case 5:
+				System.out.println("Enter State:");
+				String state = sc.nextLine();
+				for (AddressBook book : addressBookMap.values()) {
+					book.searchByState(state);
+				}
+
+				break;	
+			case 6:
 				System.out.println("Thank You");
 				sc.close();
 				return;
