@@ -181,6 +181,5 @@ public class AddressBookMain {
 					System.out.println("Invalid Choice");
 			}
 		}
-
 	}
 }
