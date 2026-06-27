@@ -23,7 +23,8 @@ public class AddressBookMain {
 			System.out.println("9.Sort By ZipCode");
 			System.out.println("10.Sort By City");
 			System.out.println("11.Sort By State");
-			System.out.println("12.Exit");
+			System.out.println("12.Reading from file");
+			System.out.println("13.Exit");
 			int input = sc.nextInt();
 			sc.nextLine();
 			switch (input) {
@@ -174,9 +175,14 @@ public class AddressBookMain {
 					}
 					break;
 				case 12:
+					System.out.println("Reading All The Contact Details");
+					myObj.readingAllTheContacts();
+					break;
+				case 13:
 					System.out.println("Thank You");
 					sc.close();
 					return;
+					
 				default:
 					System.out.println("Invalid Choice");
 			}

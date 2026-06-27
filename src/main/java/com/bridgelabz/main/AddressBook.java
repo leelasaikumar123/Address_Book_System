@@ -1,5 +1,10 @@
 package com.bridgelabz.main;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -40,6 +45,15 @@ public class AddressBook {
 		}
 		else {
 		    contactList.add(contact);
+		    try {
+		    	File file=new File("Contacts.txt");
+				FileOutputStream fos=new FileOutputStream(file, true);
+				String contactDetails=contact.toString() + System.lineSeparator();
+				fos.write(contactDetails.getBytes());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		    System.out.println("Contact Added Successfully");
 		}
 	}
@@ -82,10 +96,7 @@ public class AddressBook {
         for (Contacts contact : contactList) {
             System.out.println(contact);
         }
-	}
-	
-
-
+	}	
 	public ArrayList<Contacts> getContactList() {
 		return contactList;
 	}
@@ -131,5 +142,19 @@ public void sortByCity() {
 }
 public void sortByState() {
 	contactList.stream().sorted((c1, c2) -> c1.getState().compareToIgnoreCase(c2.getState())).forEach(System.out::println);
+}
+public void readingAllTheContacts() {
+	File file=new File("Contacts.txt");
+	try {
+		FileInputStream fs=new FileInputStream(file);
+		int i;
+		while((i=fs.read()) != -1) {
+		System.out.print((char)i);	
+		}
+		System.out.println();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 }
 }
