@@ -110,4 +110,10 @@ public class AddressBook {
 		if (!found)
 			System.out.println("No Person Found");
 	}
+	public long countByCity(String city) {
+	return contactList.stream().filter(contact -> contact.getCity().equalsIgnoreCase(city)).count();
+}
+public long countByState(String state) {
+	return contactList.stream().filter(contact -> contact.getState().equalsIgnoreCase(state)).count();
+}
 }
