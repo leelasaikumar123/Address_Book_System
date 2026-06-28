@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AddressBookDBService {
@@ -139,5 +140,36 @@ public int countByState(String state) {
         e.printStackTrace();
     }
     return 0;
+}
+public boolean addContact(Contacts contact) {
+    String sql = "INSERT INTO contact(firstName,lastName,address,city,state,zipCode,phoneNumber,email,addressBookId) VALUES(?,?,?,?,?,?,?,?,?)";
+    Connection con = null;
+    try {
+        con = db.getConnection();
+        con.setAutoCommit(false);      // Start Transaction
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, contact.getFirstName());
+        ps.setString(2, contact.getLastName());
+        ps.setString(3, contact.getAddress());
+        ps.setString(4, contact.getCity());
+        ps.setString(5, contact.getState());
+        ps.setLong(6, contact.getZipCode());
+        ps.setLong(7, contact.getPhoneNumber());
+        ps.setString(8, contact.getEmail());
+        ps.setInt(9, contact.getAddressBookId());
+        int rows = ps.executeUpdate();
+        con.commit();          
+        return rows > 0;
+    } catch (Exception e) {
+       try {
+            if (con != null)
+                con.rollback();     
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        e.printStackTrace();
+    }
+
+    return false;
 }
 }

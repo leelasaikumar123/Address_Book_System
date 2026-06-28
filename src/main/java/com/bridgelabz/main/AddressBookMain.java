@@ -30,7 +30,8 @@ public class AddressBookMain {
 			System.out.println("14.Contacts between dates");
 			System.out.println("15. Count Contacts by City (DB)");
 			System.out.println("16. Count Contacts by State (DB)");
-			System.out.println("17. Exit");
+			System.out.println("17. Add Contact To Database");
+			System.out.println("18. Exit");
 			int input = sc.nextInt();
 			sc.nextLine();
 			switch (input) {
@@ -209,6 +210,49 @@ public class AddressBookMain {
 					System.out.println("Total Contacts in " + state1 + " : " + stateCount1);
 					break;
 				case 17:
+
+				    Contacts contact = new Contacts();
+
+				    System.out.println("Enter First Name:");
+				    contact.setFirstName(sc.nextLine());
+
+				    System.out.println("Enter Last Name:");
+				    contact.setLastName(sc.nextLine());
+
+				    System.out.println("Enter Address:");
+				    contact.setAddress(sc.nextLine());
+
+				    System.out.println("Enter City:");
+				    contact.setCity(sc.nextLine());
+
+				    System.out.println("Enter State:");
+				    contact.setState(sc.nextLine());
+
+				    System.out.println("Enter Zip Code:");
+				    contact.setZipCode(sc.nextLong());
+				    sc.nextLine();
+
+				    System.out.println("Enter Phone Number:");
+				    contact.setPhoneNumber(sc.nextLong());
+				    sc.nextLine();
+
+				    System.out.println("Enter Email:");
+				    contact.setEmail(sc.nextLine());
+
+				    System.out.println("Enter Address Book Id:");
+				    contact.setAddressBookId(sc.nextInt());
+				    sc.nextLine();
+
+				    AddressBookDBService service3 = new AddressBookDBService();
+
+				    if(service3.addContact(contact)) {
+				        System.out.println("Contact Added Successfully");
+				    } else {
+				        System.out.println("Failed to Add Contact");
+				    }
+
+				    break;
+				case 18:
 					System.out.println("Thank You");
 					sc.close();
 					return;
