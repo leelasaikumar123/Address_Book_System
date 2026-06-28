@@ -9,7 +9,8 @@ public class Contacts {
 	Long zipCode;
 	Long phoneNumber;
 	String email;
-	
+	int contactId;
+	 int addressBookId;
 	public Contacts() {
 		
 	}
@@ -60,6 +61,21 @@ public class Contacts {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public int getContactId() {
+	    return contactId;
+	}
+
+	public void setContactId(int contactId) {
+	    this.contactId = contactId;
+	}
+
+	public int getAddressBookId() {
+	    return addressBookId;
+	}
+
+	public void setAddressBookId(int addressBookId) {
+	    this.addressBookId = addressBookId;
 	}
 	@Override
 	public String toString() {

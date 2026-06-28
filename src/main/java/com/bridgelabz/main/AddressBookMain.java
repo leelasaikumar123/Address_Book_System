@@ -24,7 +24,8 @@ public class AddressBookMain {
 			System.out.println("10.Sort By City");
 			System.out.println("11.Sort By State");
 			System.out.println("12.Reading from file");
-			System.out.println("13.Exit");
+			System.out.println("13.Read Contacts From Database");
+			System.out.println("14.Exit");
 			int input = sc.nextInt();
 			sc.nextLine();
 			switch (input) {
@@ -179,6 +180,10 @@ public class AddressBookMain {
 					myObj.readingAllTheContacts();
 					break;
 				case 13:
+				    System.out.println("Reading Contacts From Database");
+				    myObj.showContactsFromDB();
+				    break;	
+				case 14:
 					System.out.println("Thank You");
 					sc.close();
 					return;

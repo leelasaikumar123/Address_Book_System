@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.ArrayList;
 
 public class AddressBook {
 	ArrayList<Contacts> contactList = new ArrayList<>();
@@ -165,8 +166,19 @@ FileReader fr=new FileReader("Contacts.csv");
 		}
 		System.out.println();
 	} catch (IOException | CsvException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+}
+
+public void showContactsFromDB() {
+    AddressBookDBService service = new AddressBookDBService();
+    ArrayList<Contacts> contacts = service.getAllContacts();
+    if (contacts.isEmpty()) {
+        System.out.println("No Contacts Found");
+        return;
+    }
+    for (Contacts contact : contacts) {
+        System.out.println(contact);
+    }
 }
 }
