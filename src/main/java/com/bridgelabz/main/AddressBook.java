@@ -181,4 +181,11 @@ public void showContactsFromDB() {
         System.out.println(contact);
     }
 }
+public boolean add(Contacts contact) {
+    if (contactList.contains(contact)) {
+        return false;
+    }
+    contactList.add(contact);
+    return true;
+}
 }
