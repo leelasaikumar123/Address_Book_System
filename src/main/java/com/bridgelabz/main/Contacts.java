@@ -1,5 +1,7 @@
 package com.bridgelabz.main;
 
+import java.sql.Date;
+
 public class Contacts {
 	String firstName;
 	String lastName;
@@ -10,7 +12,8 @@ public class Contacts {
 	Long phoneNumber;
 	String email;
 	int contactId;
-	 int addressBookId;
+	int addressBookId;
+	private java.sql.Date dateAdded;
 	public Contacts() {
 		
 	}
@@ -77,6 +80,13 @@ public class Contacts {
 	public void setAddressBookId(int addressBookId) {
 	    this.addressBookId = addressBookId;
 	}
+	public Date getDateAdded() {
+    return dateAdded;
+   }
+
+    public void setDateAdded(Date dateAdded) {
+    this.dateAdded = dateAdded;
+   }
 	@Override
 	public String toString() {
 		return firstName+","+lastName+","+address+","+City+","+state+","+zipCode+","+phoneNumber+","+email;

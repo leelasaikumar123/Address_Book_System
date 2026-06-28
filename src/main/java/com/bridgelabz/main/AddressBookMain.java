@@ -1,5 +1,7 @@
 package com.bridgelabz.main;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.HashMap;
@@ -184,10 +186,18 @@ public class AddressBookMain {
 				    myObj.showContactsFromDB();
 				    break;	
 				case 14:
+				    AddressBookDBService service = new AddressBookDBService();
+				    System.out.println("Enter Start Date (yyyy-mm-dd):");
+				    Date start = Date.valueOf(sc.nextLine());
+				    System.out.println("Enter End Date (yyyy-mm-dd):");
+				    Date end = Date.valueOf(sc.nextLine());
+				    ArrayList<Contacts> contacts = service.getContactsByDate(start, end);
+				    contacts.forEach(System.out::println);
+				    break;
+				case 15:
 					System.out.println("Thank You");
 					sc.close();
-					return;
-					
+					return;					
 				default:
 					System.out.println("Invalid Choice");
 			}
