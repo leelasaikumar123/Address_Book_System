@@ -213,5 +213,14 @@ public class AddressBookTest {
 
         assertNotNull(service.getAllContacts());
     }
+    
+    @Test
+    public void givenPerson_WhenAddressUpdated_ShouldReturnUpdatedContact() {
+        AddressBookDBService service = new AddressBookDBService();
+        boolean updated = service.updateContact("Sai", "Bangalore");
+        assertTrue(updated);
+        Contacts contact = service.getContact("Sai");
+        assertEquals("Bangalore", contact.getAddress());
+    }
 
 }
