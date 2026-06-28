@@ -109,4 +109,35 @@ public class AddressBookDBService {
     }
     return list;
 }
+public int countByCity(String city) {
+    String sql = "SELECT COUNT(*) FROM contact WHERE city = ?";
+    try (
+            Connection con = db.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setString(1, city);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return 0;
+}
+
+public int countByState(String state) {
+    String sql = "SELECT COUNT(*) FROM contact WHERE state = ?";
+    try (
+            Connection con = db.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setString(1, state);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return 0;
+}
 }

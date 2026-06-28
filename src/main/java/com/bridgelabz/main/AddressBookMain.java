@@ -19,7 +19,7 @@ public class AddressBookMain {
 			System.out.println("3.Show Address Books");
 			System.out.println("4.Search By City");
 			System.out.println("5.Search By State");
-            System.out.println("6.No.0f Contacts in a city");
+			System.out.println("6.No.0f Contacts in a city");
 			System.out.println("7.No.0f Contacts in a State");
 			System.out.println("8.Sort By Name");
 			System.out.println("9.Sort By ZipCode");
@@ -27,7 +27,10 @@ public class AddressBookMain {
 			System.out.println("11.Sort By State");
 			System.out.println("12.Reading from file");
 			System.out.println("13.Read Contacts From Database");
-			System.out.println("14.Exit");
+			System.out.println("14.Contacts between dates");
+			System.out.println("15. Count Contacts by City (DB)");
+			System.out.println("16. Count Contacts by State (DB)");
+			System.out.println("17. Exit");
 			int input = sc.nextInt();
 			sc.nextLine();
 			switch (input) {
@@ -137,21 +140,19 @@ public class AddressBookMain {
 					System.out.println("Enter Address Book Name:");
 					String bookName = sc.nextLine();
 					AddressBook book = addressBookMap.get(bookName);
-					if(book == null) {
+					if (book == null) {
 						System.out.println("Address Book Not Found");
-					}
-					else {
+					} else {
 						book.sortByName();
 					}
-					break;	
+					break;
 				case 9:
 					System.out.println("Enter Address Book Name:");
 					String bookName1 = sc.nextLine();
 					AddressBook book1 = addressBookMap.get(bookName1);
-					if(book1 == null) {
+					if (book1 == null) {
 						System.out.println("Address Book Not Found");
-					}
-					else {
+					} else {
 						book1.sortByZip();
 					}
 					break;
@@ -159,10 +160,9 @@ public class AddressBookMain {
 					System.out.println("Enter Address Book Name:");
 					String bookName2 = sc.nextLine();
 					AddressBook book2 = addressBookMap.get(bookName2);
-					if(book2 == null) {
+					if (book2 == null) {
 						System.out.println("Address Book Not Found");
-					}
-					else {
+					} else {
 						book2.sortByCity();
 					}
 					break;
@@ -170,10 +170,9 @@ public class AddressBookMain {
 					System.out.println("Enter Address Book Name:");
 					String bookName3 = sc.nextLine();
 					AddressBook book3 = addressBookMap.get(bookName3);
-					if(book3 == null) {
+					if (book3 == null) {
 						System.out.println("Address Book Not Found");
-					}
-					else {
+					} else {
 						book3.sortByState();
 					}
 					break;
@@ -182,22 +181,37 @@ public class AddressBookMain {
 					myObj.readingAllTheContacts();
 					break;
 				case 13:
-				    System.out.println("Reading Contacts From Database");
-				    myObj.showContactsFromDB();
-				    break;	
+					System.out.println("Reading Contacts From Database");
+					myObj.showContactsFromDB();
+					break;
 				case 14:
-				    AddressBookDBService service = new AddressBookDBService();
-				    System.out.println("Enter Start Date (yyyy-mm-dd):");
-				    Date start = Date.valueOf(sc.nextLine());
-				    System.out.println("Enter End Date (yyyy-mm-dd):");
-				    Date end = Date.valueOf(sc.nextLine());
-				    ArrayList<Contacts> contacts = service.getContactsByDate(start, end);
-				    contacts.forEach(System.out::println);
-				    break;
+					AddressBookDBService service = new AddressBookDBService();
+					System.out.println("Enter Start Date (yyyy-mm-dd):");
+					Date start = Date.valueOf(sc.nextLine());
+					System.out.println("Enter End Date (yyyy-mm-dd):");
+					Date end = Date.valueOf(sc.nextLine());
+					ArrayList<Contacts> contacts = service.getContactsByDate(start, end);
+					contacts.forEach(System.out::println);
+					break;
+
 				case 15:
+					AddressBookDBService service1 = new AddressBookDBService();
+					System.out.println("Enter City:");
+					String city1 = sc.nextLine();
+					int cityCount1 = service1.countByCity(city1);
+					System.out.println("Total Contacts in " + city1 + " : " + cityCount1);
+					break;
+				case 16:
+					AddressBookDBService service2 = new AddressBookDBService();
+					System.out.println("Enter State:");
+					String state1 = sc.nextLine();
+					int stateCount1 = service2.countByState(state1);
+					System.out.println("Total Contacts in " + state1 + " : " + stateCount1);
+					break;
+				case 17:
 					System.out.println("Thank You");
 					sc.close();
-					return;					
+					return;
 				default:
 					System.out.println("Invalid Choice");
 			}
